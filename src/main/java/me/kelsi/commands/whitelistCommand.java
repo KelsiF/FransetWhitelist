@@ -18,14 +18,34 @@ public class whitelistCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-
-        if (args.length >= 1) {
-            if (args[0].equalsIgnoreCase("add")) {
-                list.add(args[1]);
+        if(sender.hasPermission("wl.admin")) {
+            if (args.length >= 1) {
+                if (args[0].equalsIgnoreCase("add")) {
+                    if (args[1] != null) {
+                        list.add(args[1].toLowerCase());
+                        sender.sendMessage("Игрок " + args[1] + " добавлен в вайтлист");
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                if (args[0].equalsIgnoreCase("remove")) {
+                    if (args[1] != null) {
+                        list.remove(args[1].toLowerCase());
+                        sender.sendMessage("Игрок " + args[1] + " удален из вайтлиста");
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                if (args[0].equalsIgnoreCase("list")) {
+                    sender.sendMessage(list.toString());
+                }
             }
-            if (args[0].equalsIgnoreCase("remove")) {
-                list.remove(args[1]);
-            }
+            return true;
+        } if (!sender.hasPermission("wl.admin")) {
+            sender.sendMessage("У вас недостаточно прав!");
+            return true;
         }
 
         return false;

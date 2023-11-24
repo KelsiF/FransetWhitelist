@@ -7,4 +7,4 @@ description: plugin for vanila on Franset server
 commands:
   wl:
     aliases: [wl, whitelist, fransetwhitelist, fransetwl]
-    usage: "/wl add/remove <player>"
+    usage: "/wl add/remove <player> \n/wl list"
