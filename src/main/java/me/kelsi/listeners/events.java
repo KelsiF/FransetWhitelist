@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
@@ -46,10 +47,10 @@ public class events implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        if (list.contains(player.getDisplayName())) {
+        if (list.contains(player.getDisplayName().toLowerCase())) {
             event.setCancelled(false);
         }
-        if (!list.contains(player.getDisplayName())) {
+        if (!list.contains(player.getDisplayName().toLowerCase())) {
             event.setCancelled(true);
             player.sendMessage(" \n" + "Напишите анкету в нашем дискорде, чтобы получить возможность полноценно играть\n https://bit.ly/franset-minecraft\n" + " ");
         }
@@ -83,6 +84,20 @@ public class events implements Listener {
     }
 
     @EventHandler
+    public void onDamageByPlayer(EntityDamageByEntityEvent event) {
+        if (event.getDamager() instanceof Player) {
+            Player player = (Player) event.getDamager();
+            if (list.contains(player.getDisplayName().toLowerCase())) {
+                event.setCancelled(false);
+            }
+            if (!list.contains(player.getDisplayName().toLowerCase())) {
+                event.setCancelled(true);
+                player.sendMessage(" \n" + "Напишите анкету в нашем дискорде, чтобы получить возможность полноценно играть\n https://bit.ly/franset-minecraft\n" + " ");
+            }
+        }
+    }
+
+    @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getPlayer();
         if (list.contains(player.getDisplayName().toLowerCase())) {
@@ -95,16 +110,5 @@ public class events implements Listener {
         }
     }
 
-    @EventHandler
-    public void onPickup(InventoryPickupItemEvent event) {
-        Player player = (Player) event.getInventory().getHolder();
-        if (list.contains(player.getDisplayName().toLowerCase())) {
-            event.setCancelled(false);
-        }
-        if (!list.contains(player.getDisplayName().toLowerCase())) {
-            event.setCancelled(true);
-            player.sendMessage(" \n" + "Напишите анкету в нашем дискорде, чтобы получить возможность полноценно играть\n https://bit.ly/franset-minecraft\n" + " ");
-        }
-    }
 
 }
