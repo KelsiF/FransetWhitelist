@@ -52,7 +52,7 @@ public class events implements Listener {
         }
         if (!list.contains(player.getDisplayName().toLowerCase())) {
             event.setCancelled(true);
-            player.sendMessage(" \n" + "Напишите анкету в нашем дискорде, чтобы получить возможность полноценно играть\n https://bit.ly/franset-minecraft\n" + " ");
+            player.sendMessage(" \n" + plugin.getConfig().getString("messages.not-whitelisted") + " ");
         }
     }
 
@@ -64,7 +64,7 @@ public class events implements Listener {
         }
         if (!list.contains(player.getDisplayName().toLowerCase())) {
             event.setCancelled(true);
-            player.sendMessage(" \n" + "Напишите анкету в нашем дискорде, чтобы получить возможность полноценно играть\n https://bit.ly/franset-minecraft\n" + " ");
+            player.sendMessage(" \n" + plugin.getConfig().getString("messages.not-whitelisted") + " ");
         }
     }
 
@@ -78,7 +78,7 @@ public class events implements Listener {
             }
             if (!list.contains(player.getDisplayName().toLowerCase())) {
                 event.setCancelled(true);
-                player.sendMessage(" \n" + "Напишите анкету в нашем дискорде, чтобы получить возможность полноценно играть\n https://bit.ly/franset-minecraft\n" + " ");
+                player.sendMessage(" \n" + plugin.getConfig().getString("messages.not-whitelisted") + " ");
             }
         }
     }
@@ -92,7 +92,7 @@ public class events implements Listener {
             }
             if (!list.contains(player.getDisplayName().toLowerCase())) {
                 event.setCancelled(true);
-                player.sendMessage(" \n" + "Напишите анкету в нашем дискорде, чтобы получить возможность полноценно играть\n https://bit.ly/franset-minecraft\n" + " ");
+                player.sendMessage(" \n" + plugin.getConfig().getString("messages.not-whitelisted") + " ");
             }
         }
     }
@@ -105,7 +105,7 @@ public class events implements Listener {
         }
         if (!list.contains(player.getDisplayName().toLowerCase())) {
             event.setCancelled(true);
-            player.sendMessage(" \n" + "Напишите анкету в нашем дискорде, чтобы получить возможность полноценно играть\n https://bit.ly/franset-minecraft\n" + " ");
+            player.sendMessage(" \n" + plugin.getConfig().getString("messages.not-whitelisted") + " ");
             player.sendMessage(ChatColor.GRAY + "Вы не можете даже умереть))))");
         }
     }

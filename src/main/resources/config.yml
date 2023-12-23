@@ -1,2 +1,6 @@
+messages:
+  not-whilisted: "Напишите анкету в нашем дискорде, чтобы получить возможность полноценно играть
+ https://bit.ly/franset-minecraft"
+
 whitelisted:
   - "kelsidev"
